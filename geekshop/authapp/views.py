@@ -1,7 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
+from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+
+from django.conf import settings
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
@@ -29,14 +32,27 @@ class RegisterListView(FormView,BaseClassContextMixin):
 
         form = self.form_class(data=request.POST)
         if form.is_valid():
-            form.save()
-            messages.set_level(request, messages.SUCCESS)
-            messages.success(request, 'Вы успешно зарегистрировались!')
+            user = form.save()
+            if self.send_verify_link(user):
+                messages.set_level(request, messages.SUCCESS)
+                messages.success(request, 'Вы успешно зарегистрировались!')
             return HttpResponseRedirect(reverse('authapp:login'))
         else:
             messages.set_level(request, messages.ERROR)
             messages.error(request, form.errors)
         return render(request, self.template_name, {'form': form})
+
+    @staticmethod
+    def send_verify_link(user):
+        verify_link = reverse('authapp:verify', args=[user.email, user.activation_key])
+        subject = f'Для активации учетной записи {user.username} пройдите по ссылке'
+        message = f'Для подтверждения учетной записи {user.username} на портале \n {settings.DOMAIN_NAME}{verify_link}'
+        return send_mail(subject, message, settings.EMAIL_HOST_USER, [user.email], fail_silently=False)
+
+    @staticmethod
+    def verify(email, activate_key):
+        pass
+
 
 class ProfileFormView(UpdateView,BaseClassContextMixin,UserDispatchMixin):
     template_name = 'authapp/profile.html'
