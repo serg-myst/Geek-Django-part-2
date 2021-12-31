@@ -3,11 +3,12 @@ from django.db import models
 from django.utils.timezone import now
 from datetime import timedelta
 
+
 # Create your models here.
 
 
 class User(AbstractUser):
-    image = models.ImageField(upload_to='users_image',blank=True)
+    image = models.ImageField(upload_to='users_image', blank=True)
     age = models.PositiveIntegerField(default=18)
 
     activation_key = models.CharField(max_length=123, blank=True)
