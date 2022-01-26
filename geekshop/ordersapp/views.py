@@ -7,7 +7,7 @@ from ordersapp.models import Order, OrderItem
 
 from django.db import transaction
 from django.forms import inlineformset_factory
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 
@@ -15,6 +15,7 @@ from baskets.models import Basket
 from mainapp.mixin import BaseClassContextMixin
 from ordersapp.forms import OrderItemsForm
 
+from mainapp.models import Product
 
 # Create your views here.
 
@@ -141,3 +142,13 @@ def product_quantity_update_save(sender, instance, **kwargs):
     else:
         instance.product.quantity -= instance.quantity
     instance.product.save()
+
+
+# Получаем цену для интерактивной работы с заказом
+def product_change(request, pk):
+    if request.accepts('text/html'):
+        try:
+            product = Product.objects.get(pk=pk)
+            return JsonResponse({'productPrice': product.price})
+        except Exception as e:
+            return JsonResponse({'error': str(e)})
