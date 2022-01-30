@@ -1,0 +1,395 @@
+    1  cat /root/.ssh/id_rsa.pub
+    2  ls
+    3  cd root
+    4  cd..
+    5  cat
+    6  cat /root/.ssh/id_rsa.pub
+    7  ssh-keygen
+    8  cat /root/.ssh/id_rsa.pub.pub
+    9  ls
+   10  cat id_rsa.pub.pub
+   11  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCTUJgEEXbHBOqlJJ0E+OLhJ6tIsKiVObPoc55zB4ennNJEQX0OX+4QKd1bwJ0njQpBXvNpdfos+yAbguwqLp/W7VKRzoAe6+EUEcxTtGadVYFXbMppUQhkazjx5mIGCTXg0PqFC2uufo2vgmydn69V0YlN8PFsCoLgKCSSAtTnnJfi+vwcjAfA0vRWxChHs2dmiE5cQnmauaK1/JONRlX4vEOIrsRvUgPTBBmvgj5/kcheK+aYKjklS3OenPj45OhHM/3ftOkFaAXFX64K0zzAhCQY+yMNkIHOVqhWXGe+7oBZFYnPFz/eQCfp17Tt5pUy5HmvRQxEo9ZMgmJHD2ekNB4BAhEY//tZ7f1WEd1OhvVJxSPFcgcisrCP95+2s9gZNO+MVbf6O8uc4X3w/rHXvXDqRkwQWLlm9xlO6mJLlRVqSljZWi/rnhyzMeowmLc= root@80-78-251-116.cloudvps.regruhosting.ru
+   12  cat id_rsa.pub.pub
+   13  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCTUJgEEXbHpltVM/bgZLhJ6tIsKiVObPoc55zB4ennNJEQX0OX+4QKd1bwJ0njQpBXvNpdfos+yAbguwqLp/W7VKRzoAe6+EUEcxTtGadVYFXbMppUQhkazjx5mIGCTXg0PqFC2uufo2vgmydn69V0YlN8PFsCoLgKCSSAtTnnJfi+vwcjAfA0vRWxChHs2dmiE5cQnmauaK1/JONRlX4vEOIrsRvUgPTBBmvgj5/kcheK+aYKjklS3OenPj45OhHM/3ftOkFaAXFX64K0zzAhCQY+yMNkIHOVqhWXGe+7oBZFYnPFz/eQCfp17Tt5pUy5HmvRQxEo9ZMgmJHD2ekNB4BAhEY//tZ7f1WEd1OhvVJxSPFcgcisrCP95+2s9gZNO+MVbf6O8uc4X3w/rHXvXDqRkwQWLlm9xlO6mJLlRVqSljZWi/rnhyzMeowmLc= root@80-78-251-116.cloudvps.regruhosting.ru
+   14  cat id_rsa.pub.pub
+   15  clear
+   16  cat id_rsa.pub.pub
+   17  pscp shs@80.78.251.116:id_rsa.pub.pub d:\
+   18  clear
+   19  cat id_rsa.pub.pub
+   20  sudo apt update
+   21  sudo apt install nginx
+   22  sudo apt install postgresql postgresql-contrib
+   23  sudo apt install python3-venv
+   24  sudo nano /etc/postgresql/12/main/pg_hba.conf 
+   25  sudo systemctl restart postgesql
+   26  systemctl restart postgesql
+   27  sudo apt install postgresql postgresql-contrib
+   28  systemctl restart postgesql
+   29  sysytemctl restart postgresql
+   30  systemctl restart postgresql
+   31  systemctl status postgresql
+   32  sudo apt install git-core
+   33  sudo useradd -g www-data -m django
+   34  cd /home/django/
+   35  git clone git@github.com:serg-myst/Geek-Django-part-2.git
+   36  sudo git clone git@github.com:serg-myst/Geek-Django-part-2.git
+   37  ssh-keygen
+   38  cd ..
+   39  cd root/
+   40  ls
+   41  cd root/.ssh
+   42  ssh-keygen
+   43  cd /home/
+   44  cd django/
+   45  sudo git clone git@github.com:serg-myst/Geek-Django-part-2.git
+   46  sudo ssh-keygen
+   47  cat /root/.ssh/id_rsa.pub
+   48  sudo cp /root/.ssh/id_rsa.pub /home
+   49  cd /root
+   50  cd root
+   51  ls
+   52  cd /root/.ssh
+   53  ls
+   54  cp id_rsa.pub /home/
+   55  cd..
+   56  cd ..
+   57  cd /home
+   58  ls
+   59  cd django/
+   60  sudo git clone git@github.com:srg-myst/Geek-Django-part-2.git
+   61  sudo git clone git@github.com:serg-myst/Geek-Django-part-2.git
+   62  ls
+   63  python3 -m venv env
+   64  source env/bin/activate
+   65  cd Geek-Django-part-2/
+   66  git branch
+   67  git checkout lesson_5
+   68  git pull
+   69  git checkout lesson_5
+   70  git checkout Lesson_5
+   71  git pull
+   72  ls
+   73  cd geekshop/
+   74  ls
+   75  pip install -r requiremets.txt 
+   76  pip install wheel
+   77  pip install gunicorn
+   78  psql -U postgres
+   79  python3 manage.py migrate
+   80  python3 manage.py fill_db
+   81  python3 manage.py runserver 0.0.0.0:8000
+   82  git pull
+   83  python3 manage.py runserver 0.0.0.0:8000
+   84  python3 manage.py createsuperuser
+   85  python3 manage.py runserver 0.0.0.0:8000
+   86  git pull
+   87  python3 manage.py runserver 0.0.0.0:8000
+   88  git pull
+   89  python3 manage.py runserver 0.0.0.0:8000
+   90  chown -R django /home/django/
+   91  chmod -R /home/django/geekshop/
+   92  chmod -R 755 /home/django/geekshop/
+   93  chmod -R 755 /home/django/Geek-Django-part-2/geekshop/
+   94  nano /etc/systemd/system/gunicorn.service
+   95  ls
+   96  sudo sytemctl enable gunicorn
+   97  sudo systemctl enable gunicorn
+   98  sudo systemctl start gunicorn
+   99  sudo systemctl status gunicorn
+  100  nano /etc/systemd/system/gunicorn.service
+  101  sudo systemctl enable gunicorn
+  102  sudo systemctl start gunicorn
+  103  sudo systemctl status gunicorn
+  104  sudo systemctl enable gunicorn.service
+  105  sudo systemctl start gunicorn
+  106  sudo systemctl status gunicorn
+  107  chown -R /home/django/
+  108  chown -R django /home/django/
+  109  sudo systemctl restart gunicorn.servicw
+  110  sudo systemctl restart gunicorn.service
+  111  sudo systemctl status gunicorn
+  112  cd ..
+  113  ls
+  114  cd env/
+  115  ls
+  116  cd bin
+  117  ls
+  118  cd ..
+  119  sudo chmod -R 755/home/django/Geek-Django-part-2/ 
+  120  sudo chmod -R 755 /home/django/Geek-Django-part-2/ 
+  121  sudo systemctl restart gunicorn.service
+  122  sudo systemctl status gunicorn.service
+  123  sudo systemctl stop gunicorn.service
+  124  sudo systemctl status gunicorn.service
+  125  sudo systemctl start gunicorn.service
+  126  sudo systemctl status gunicorn.service
+  127  sudo systemctl enable gunicorn.service
+  128  sudo systemctl status gunicorn.service
+  129  sudo systemctl stop gunicorn.service
+  130  sudo nano /etc/systemd/system/gunicorn.service
+  131  sudo systemctl enable gunicorn.service
+  132  sudo systemctl start gunicorn.service
+  133  sudo systemctl status gunicorn.service
+  134  git pull
+  135  cd Geek-Django-part-2/
+  136  git pull
+  137  cd geekshop/
+  138  git pull
+  139  git branch
+  140  git pull
+  141  git commit
+  142  git pull
+  143  git show
+  144  git status
+  145  git show
+  146  git add base.html
+  147  cd mainapp/templates/mainapp/base.html
+  148  cd mainapp/templates/mainapp/
+  149  git add base.html 
+  150  git commit -amend -m 'base'
+  151  git commit -amend -m "base"
+  152  git commit --amend -m "base"
+  153  cd ..
+  154  git pull
+  155  git show
+  156  git hist
+  157  git push
+  158  git push Lesson_5
+  159  git push main feature/Lesson_5
+  160  git checkout Lesson_5
+  161  git push origin feature/Lesson_5
+  162  git push -u main feature/Lesson_5
+  163  git push -u origin feature/Lesson_5
+  164  python3 manage.py runserver 0.0.0.0:8000
+  165  sudo systemctl restart gunicorn
+  166  sudo systemctl status gunicorn
+  167  cd ..
+  168  ls
+  169  cd ..
+  170  ls
+  171  sudo systemctl restart gunicorn.service
+  172  sudo systemctl status gunicorn
+  173  sudo systemctl start gunicorn
+  174  sudo systemctl restart gunicorn
+  175  sudo nano /etc/systemd/system/gunicorn.service
+  176  sudo ls -l /etc/systemd/system/gunicorn.service
+  177  sudo systemctl enable gunicorn.service
+  178  sudo systemctl start gunicorn.service
+  179  sudo systemctl status gunicorn.service
+  180  sudo systemctl restart gunicorn.service
+  181  sudo systemctl enable  gunicorn.service
+  182  sudo systemctl restart gunicorn.service
+  183  sudo systemctl status gunicorn.service
+  184  sudo systemctl reload gunicorn.service
+  185  sudo systemctl status gunicorn.service
+  186  sudo systemctl status gunicorn
+  187  sudo systemctl status gunicorn.sock
+  188  sudo systemctl status gunicorn
+  189  sudo systemctl daemon-reload
+  190  sudo systemctl restart ginicorn
+  191  sudo systemctl enable ginicorn
+  192  sudo systemctl restart gunicorn
+  193  sudo systemctl status gunicorn
+  194  sudo systemctl enable ginicorn
+  195  sudo systemctl enable gunicorn
+  196  sudo systemctl restart gunicorn
+  197  sudo systemctl status gunicorn
+  198  sudo systemctl enable gunicorn
+  199  sudo systemctl start gunicorn
+  200  sudo systemctl status gunicorn
+  201  sudo systemctl enable gunicorn
+  202  sudo systemctl start gunicorn
+  203  sudo systemctl status gunicorn
+  204  sudo systemctl enable gunicorn
+  205  sudo systemctl start gunicorn
+  206  sudo systemctl status gunicorn
+  207  sudo systemctl enable gunicorn
+  208  sudo systemctl start gunicorn
+  209  sudo systemctl enable gunicorn.service
+  210  sudo systemctl start gunicorn.
+  211  sudo systemctl start gunicorn
+  212  sudo systemctl status gunicorn
+  213  sudo systemctl enable gunicorn.service
+  214  sudo systemctl start gunicorn
+  215  sudo systemctl status gunicorn
+  216  sudo nano /etc/systemd/system/gunicorn.socket
+  217  sudo systemctl enable gunicorn.service
+  218  sudo systemctl start gunicorn
+  219  sudo systemctl status gunicorn
+  220  sudo systemctl enable gunicorn.service
+  221  sudo systemctl start gunicorn
+  222  sudo systemctl status gunicorn
+  223  sudo systemctl restart gunicorn
+  224  sudo systemctl status gunicorn
+  225  sudo systemctl restart gunicorn.service
+  226  sudo systemctl status gunicorn
+  227  sudo reload gunicorn
+  228  sudo systemctl reload gunicorn
+  229  sudo systemctl reload gunicorn.service
+  230  sudo systemctl stop gunicorn.service
+  231  sudo systemctl status gunicorn
+  232  sudo systemctl enable gunicorn
+  233  sudo systemctl start gunicorn
+  234  sudo systemctl status gunicorn
+  235  chown -R django /home/django/Geek-Django-part-2/geekshop/
+  236  chown -R django /home/django/Geek-Django-part-2/geekshop/geekshop/
+  237  chown :www-data django /home/django/Geek-Django-part-2/geekshop/geekshop/
+  238  chown :www-data /home/django/Geek-Django-part-2/geekshop/geekshop/
+  239  cmod -R 755 /home/django/Geek-Django-part-2/geekshop/geekshop/
+  240  chmod -R 755 /home/django/Geek-Django-part-2/geekshop/geekshop/
+  241  sudo systemctl enable gunicorn
+  242  sudo systemctl restart gunicorn
+  243  sudo systemctl status gunicorn
+  244  ls -l
+  245  cd Geek-Django-part-2/
+  246  ls -l
+  247  sudo systemctl restart gunicorn
+  248  sudo systemctl enable gunicorn
+  249  sudo systemctl restart gunicorn
+  250  sudo systemctl status gunicorn
+  251  chown django:www-data /home/django/
+  252  cd ..
+  253  ls -l
+  254  chown -R django:www-data /home/django/
+  255  ls -l
+  256  cd Geek-Django-part-2/
+  257  ls -l
+  258  cd ..
+  259  sudo systemctl enable gunicorn
+  260  sudo systemctl start gunicorn
+  261  sudo systemctl status gunicorn
+  262  systemctl restart gunicorn
+  263  systemctl status gunicorn
+  264  systemctl enable gunicorn
+  265  systemctl start gunicorn
+  266  systemctl status gunicorn
+  267  systemctl enable gunicorn
+  268  systemctl start gunicorn
+  269  systemctl status gunicorn
+  270  systemctl enable gunicorn
+  271  systemctl start gunicorn
+  272  systemctl status gunicorn
+  273  chown -R django:www-data /home/django/Geek-Django-part-2/
+  274  chown -R django:www-data /home/django/Geek-Django-part-2/geekshop/
+  275  chown -R django:www-data /home/django/Geek-Django-part-2/geekshop/geekshop/
+  276  chown -R django:www-data /home/django/Geek-Django-part-2/geekshop/geekshop/wsgi.py
+  277  systemctl enable gunicorn
+  278  systemctl start gunicorn
+  279  systemctl status gunicorn
+  280  systemctl enable gunicorn
+  281  systemctl start gunicorn
+  282  systemctl status gunicorn
+  283  systemctl enable gunicorn
+  284  systemctl start gunicorn
+  285  systemctl status gunicorn
+  286  systemctl enable gunicorn
+  287  systemctl start gunicorn
+  288  systemctl status gunicorn
+  289  systemctl enable gunicorn
+  290  systemctl start gunicorn
+  291  systemctl status gunicorn
+  292  systemctl restart gunicorn
+  293  systemctl status gunicorn
+  294  systemctl restart gunicorn
+  295  systemctl enable gunicorn
+  296  systemctl restart gunicorn
+  297  systemctl status gunicorn
+  298  systemctl enable gunicorn
+  299  systemctl restart gunicorn
+  300  systemctl status gunicorn
+  301  systemctl enable gunicorn
+  302  systemctl restart gunicorn
+  303  systemctl status gunicorn
+  304  systemctl enable gunicorn
+  305  systemctl restart gunicorn
+  306  systemctl status gunicorn
+  307  systemctl enable gunicorn
+  308  systemctl start gunicorn
+  309  systemctl status gunicorn
+  310  systemctl enable gunicorn
+  311  systemctl start gunicorn
+  312  systemctl status gunicorn
+  313  systemctl enable gunicorn
+  314  systemctl start gunicorn
+  315  systemctl status gunicorn
+  316  systemctl куstart gunicorn
+  317  systemctl restart gunicorn
+  318  systemctl status gunicorn
+  319  systemctl enable gunicorn
+  320  systemctl start gunicorn
+  321  systemctl status gunicorn
+  322* 
+  323  sudo systemctl stop gunicorn
+  324  systemctl status gunicorn
+  325  cd 777
+  326  cd geekshop/
+  327  systemctl enable gunicorn.service
+  328  systemctl start gunicorn.service
+  329  systemctl status gunicorn.service
+  330  pip freez
+  331  pip freeze
+  332  systemctl enable gunicorn.service
+  333  systemctl start gunicorn.service
+  334  systemctl status gunicorn.service
+  335  pip install gunicorn
+  336  systemctl enable gunicorn.service
+  337  systemctl start gunicorn.service
+  338  systemctl status gunicorn.service
+  339  systemctl enable gunicorn.service
+  340  systemctl start gunicorn.service
+  341  systemctl status gunicorn.service
+  342  systemctl enable gunicorn.service
+  343  systemctl start gunicorn.service
+  344  systemctl status gunicorn.service
+  345  systemctl enable gunicorn.service
+  346  systemctl start gunicorn.service
+  347  systemctl status gunicorn.service
+  348  systemctl enable gunicorn.service
+  349  systemctl start gunicorn.service
+  350  systemctl status gunicorn.service
+  351  systemctl start gunicorn.service
+  352  systemctl status gunicorn.service
+  353  systemctl enable gunicorn.service
+  354  systemctl start gunicorn.service
+  355  systemctl status gunicorn.service
+  356  systemctl enable gunicorn.service
+  357  systemctl start gunicorn.service
+  358  systemctl status gunicorn.service
+  359  python3
+  360  systemctl enable gunicorn.service
+  361  systemctl start gunicorn.service
+  362  systemctl status gunicorn.service
+  363  systemctl enable gunicorn.service
+  364  systemctl start gunicorn.service
+  365  systemctl status gunicorn.service
+  366  systemctl enable gunicorn.service
+  367  systemctl start gunicorn.service
+  368  systemctl status gunicorn.service
+  369  systemctl enable gunicorn.service
+  370  systemctl start gunicorn.service
+  371  systemctl status gunicorn.service
+  372  systemctl enable gunicorn.service
+  373  systemctl start gunicorn.service
+  374  systemctl status gunicorn.service
+  375  cd ..
+  376  systemctl stop gunicorn.service
+  377  systemctl enable gunicorn.service
+  378  systemctl start gunicorn.service
+  379  systemctl status gunicorn.service
+  380  sudo nano /etc/nginx/sites-availabl/geekshop
+  381  sudo nano /etc/nginx/sites-available/geekshop
+  382  ln - s /etc/nginx/sites-available/geekshop /etc/nginx/sites-enabled/
+  383  ln -s /etc/nginx/sites-available/geekshop /etc/nginx/sites-enabled/
+  384  sudo ln -s /etc/nginx/sites-available/geekshop /etc/nginx/sites-enabled/
+  385  sudo ln -s /etc/nginx/sites-available/geekshop /etc/nginx/sites-enabled
+  386  sudo ls /etc/nginx/sites-available
+  387  sudo ln -s /etc/nginx/sites-available/geekshop /etc/nginx/sites-enabled
+  388  rm /etc/nginx/sites-enabled/default 
+  389  systemctl restart gunicorn.service
+  390  nginx -t
+  391  systemctl restart nginx
+  392  systemctl status nginx
+  393  tail -f /var/log/nginx/error.log
+  394  history
+  395  history > /tmp/history.txt
