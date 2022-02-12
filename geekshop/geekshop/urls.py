@@ -43,4 +43,4 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += [path('debug', include(debug_toolbar.urls))]
+urlpatterns += [path('debug/', include(debug_toolbar.urls))]
