@@ -1,0 +1,4 @@
+http://80.78.251.116/
+http://80.78.251.116/products/
+http://80.78.251.116/users/login/?next=/users/profile/ POST username=zerg&password=1
+http://80.78.251.116/products/detail/2/
