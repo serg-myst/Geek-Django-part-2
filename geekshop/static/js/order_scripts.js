@@ -1,129 +1,153 @@
-window.onload = function() {
+window.onload = function () {
 
-    total_quantity = document.getElementsByClassName('order_total_quantity')[0];
-    total_price = document.getElementsByClassName('order_total_cost')[0];
-    delete_rows = []; /* Массив для хранения идентификаторов удаленных строк */
+    let quantity, price, orderitem_num, delta_quantity, orderitem_quantity, delta_cost
 
-    $orderForm = $('.order_form');
-    $orderForm.on('change', 'select', changeProduct);
+    let quantity_arr = []
+    let price_arr = []
 
-    /*
-    console.log(total_rows);
-    console.log(total_quantity);
-    console.log(total_price);
-    */
+    let total_forms = parseInt($('input[name=orderitems-TOTAL_FORMS]').val())
+    // console.log(total_forms)
 
-    AddListener();
+    let order_total_quantity = parseInt($('.order_total_quantity').text()) || 0;
+    let order_total_cost = parseInt($('.order_total_cost').text().replace(',', '.')) || 0;
 
-    /* Подключаем обработчик на колонку "Количество". При изменении пересчитываем итог. */
-    function AddListener() {
-        let total_rows = parseInt(document.querySelector("input[name=orderitems-TOTAL_FORMS]").value)  + delete_rows.length;
-        for (let i = 0; i < total_rows; i++) {
-            document.getElementById('id_orderitems-' + i + '-quantity').addEventListener('click', Total_Order_Parameters);
+    // console.log(order_total_quantity)
+    // console.log(order_total_cost)
+
+    for (let i = 0; i < total_forms; i++) {
+        quantity = parseInt($('input[name=orderitems-' + i + '-quantity]').val())
+        price = parseInt($('.orderitems-' + i + '-price').text().replace(',', '.'))
+
+        quantity_arr[i] = quantity;
+        if (price) {
+            price_arr[i] = price;
+        } else {
+            price_arr[i] = 0;
         }
     }
 
-    /**
- * Функция прослушивания изменения позиции товара
- * @param event - элемент на который воздействовали
- */
-function changeProduct(event) {
-    let pkProduct = event.target.value;
-    const itemTrParent = event.target.closest('tr');
-    console.log(pkProduct);
-    if (pkProduct) {
-        // Выбран не пустой товар
-        $.ajax(
-            {
-                url: `/orders/product/change/${pkProduct}/`,
-                success: function (data) {
+    console.info('QUANTITY', quantity_arr)
+    console.info('PRICE', price_arr)
 
-                    console.log(data.productPrice);
 
-                    item_id = parseInt(event.target.name.replace('orderitems-', '').replace('-product'));
-
-                    /* Делаем в цикле. Программе меняет классы. Иногда цена в TD1 в другой раз в TD3 */
-                    /* Если нет вложенных элементов, тогда это тэг, в котороый надо добавить цену */
-                    for (let i = 1; i < 4; i++) {
-                        let itemPrice = itemTrParent.querySelector(`.td`+i);
-                        if (itemPrice.children.length == 0) {
-                            itemPrice.innerHTML = `<span class="orderitems-${item_id}-price">${data.productPrice} руб </span>`;
-                        }
-                    }
-                },
-            });
-    } else {
-        // Выбран пустой товар - ветка удаления
-        let btn = itemTrParent.querySelector('.delete-row');
-        btn.click();
-    }
-    event.preventDefault();
-    AddListener();
-    Total_Order_Parameters();
-}
-
-    /* Пробежимся по строкам таблицы. Заполним итоговые реквизиты */
-    function Total_Order_Parameters() {
-        let quantity = 0;
-        let price = 0;
-         /* Добавляем длину массива. При удалении в документе строки остаются, но программа общее количество строк меньше на количество удаленных total_rows */
-        let total_rows = parseInt(document.querySelector("input[name=orderitems-TOTAL_FORMS]").value) + delete_rows.length;
-        for (let i = 0; i < total_rows; i++) {
-            let price_element = document.getElementsByClassName('orderitems-'+i+'-price');
-            if (price_element.length != 0){
-                let current_quantity = parseInt(document.getElementById('id_orderitems-'+i+'-quantity').value);
-                /* let current_check_box = document.getElementById('id_orderitems-'+i+'-DELETE').checked; - Если есть checkbox. У нас добавлена кнопка */
-                /* if (!current_check_box) - Это, если Удалить = checkbox */
-                if (delete_rows.includes(i) === false) {
-                    quantity += current_quantity;
-                    let current_price = parseInt(price_element[0].innerText.replace(' руб', '').replace(',', '.'));
-                    price +=  (current_price * current_quantity);
-                }
+    //1 метод
+    $('.order_form').on('click', 'input[type=number]', function () {
+            let target = event.target
+            orderitem_num = parseInt(target.name.replace('orderitems-', '').replace('-quantity', ''));
+            if (price_arr[orderitem_num]) {
+                orderitem_quantity = parseInt(target.value);
+                delta_quantity = orderitem_quantity - quantity_arr[orderitem_num];
+                quantity_arr[orderitem_num] = orderitem_quantity;
+                orderSummaryUpdate(price_arr[orderitem_num], delta_quantity)
             }
         }
+    )
 
-        total_quantity.innerText = quantity;
-        total_price.innerText = number_format(price, 2, ',', ' ');
-    }
 
-    /* Служебная функция форматирование числа */
-    function number_format(number, decimals, dec_point, thousands_sep) {
-    number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
-    var n = !isFinite(+number) ? 0 : +number,
-        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-        s = '',
-        toFixedFix = function (n, prec) {
-            var k = Math.pow(10, prec);
-            return '' + Math.round(n * k) / k;
-        };
-    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
-    if (s[0].length > 3) {
-        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-    }
-    if ((s[1] || '').length < prec) {
-        s[1] = s[1] || '';
-        s[1] += new Array(prec - s[1].length + 1).join('0');
-    }
-    return s.join(dec);
-    }
+    //2 метод
+    $('.order_form').on('click', 'input[type=checkbox]', function () {
+            let target = event.target
+            orderitem_num = parseInt(target.name.replace('orderitems-', '').replace('-DELETE', ''));
+            if (target.checked) {
+                delta_quantity = -quantity_arr[orderitem_num]
 
-    function deleteOrderItem(row) {
-        /* Получаем идентификатор товара */
-        let targetName = row[0].querySelector('input[type="number"]').name;
-        let current_id = parseInt(targetName.replace('orderitems-', '').replace('-quantity', ''));
-        delete_rows.push(current_id);
-        Total_Order_Parameters();
-        /* console.log(delete_rows); */
+            } else {
+                delta_quantity = quantity_arr[orderitem_num];
+            }
+            orderSummaryUpdate(price_arr[orderitem_num], delta_quantity)
+        }
+    );
+
+
+    function orderSummaryUpdate(orderitem_price, delta_quantity) {
+        delta_cost = orderitem_price * delta_quantity;
+        order_total_cost = Number((order_total_cost + delta_cost).toFixed(2))
+        order_total_quantity = order_total_quantity + delta_quantity
+
+        $('.order_total_quantity').html(order_total_quantity.toString());
+        $('.order_total_cost').html(order_total_cost.toString() + ',00');
+
     }
 
-    /* Работа с добавлением новых товаров */
+
     $('.formset_row').formset({
-        addText: 'Добавить продукт',
+        addText: 'добавить продукт',
         deleteText: 'Удалить',
         prefix: 'orderitems',
         removed: deleteOrderItem,
     });
+
+
+    function deleteOrderItem(row) {
+        let target_name = row[0].querySelector('input[type="number"]').name
+        orderitem_num = parseInt(target_name.replace('orderitems-', '').replace('-quantity', ''));
+        delta_quantity = -quantity_arr[orderitem_num]
+        orderSummaryUpdate(price_arr[orderitem_num], delta_quantity)
+    }
+
+
+    $(document).on('change', '.form-control', function () {
+
+
+        let target = event.target;
+        orderitem_num = parseInt(target.name.replace('orderitems-', '').replace('-product', ''));
+        let orderitem_product_pk = target.options[target.selectedIndex].value;
+
+
+        console.log(orderitem_num)
+        console.log(orderitem_product_pk)
+
+        if (orderitem_product_pk) {
+
+            $.ajax({
+                url: '/orders/product/' + orderitem_product_pk + '/price/',
+                success: function (data) {
+
+                    if (data.price) {
+                        price_arr[orderitem_num] = parseFloat(data.price)
+                        if (isNaN(quantity_arr[orderitem_num])) {
+                            quantity_arr[orderitem_num] = 0;
+                        }
+                        let price_html = '<span class="orderitems-' + orderitem_num + '-price">'
+                            + data.price.toString().replace('.', ',') + '</span> руб';
+                        let current_tr = $('.order_form table').find('tr:eq(' + (orderitem_num + 1) + ')');
+                        current_tr.find('td:eq(2)').html(price_html)
+
+                    }
+                }
+            })
+
+        }
+
+
+    })
+
+
+    $('.basket_list').on('click', 'input[type="number"]', function () {
+        let t_href = event.target
+        $.ajax(
+            {
+                url: "/baskets/edit/" + t_href.name + "/" + t_href.value + "/",
+                success: function (data) {
+                    $('.basket_list').html(data.result)
+                },
+            });
+        event.preventDefault()
+    })
+
+    $('.card_add_basket').on('click', 'button[type="button"]', function () {
+        let t_href = event.target.value
+        $.ajax(
+            {
+                url: "/baskets/add/" + t_href + "/",
+                success: function (data) {
+                    $('.card_add_basket').html(data.result)
+                    alert('товар добавлен вы корзину')
+                },
+            });
+        event.preventDefault()
+        //
+    })
+
 
 }
